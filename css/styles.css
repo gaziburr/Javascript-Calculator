@@ -7,7 +7,6 @@
 .calculator{
   margin-left: 20px;
   margin-right: 20px;
-  height: 490px;
   background-color: gray;
 }
 .screen{
@@ -129,4 +128,12 @@
 }
 .clear{
   clear: both;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+.no-margin {
+  margin: 0px !important;
 }
