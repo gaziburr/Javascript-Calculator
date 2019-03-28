@@ -12,6 +12,7 @@ var error = 0;
 var operationArray = [];
 var visual = document.querySelector('.on-screen');
 var clear = document.querySelector('.clr');
+
 clear.addEventListener('click',
   function clearScreen(){
     number = '0';
@@ -23,6 +24,7 @@ clear.addEventListener('click',
     operationArray = [];
   }
 );
+
 var equal = document.querySelector('.equal');
 equal.addEventListener('click',
   function endOperation(){
@@ -117,6 +119,28 @@ equal.addEventListener('click',
             operationArray = [];
             break;
           }
+        case 'root':
+          inOperation = Math.sqrt(parseFloat(number));
+          if(inOperation.toString().length > 7){
+            number = 'Over';
+            visual.innerHTML = number;
+            error = 1;
+            break;
+          }
+          else{
+            number = inOperation.toString();
+            visual.innerHTML = number;
+            valid = 1;
+            running = 0;
+            sum = 0;
+            difference = 0;
+            product = 0;
+            quotient = 0;
+            refresh = 1;
+            operationArray = [];
+            break;
+          } 
+
         default:
           visual.innerHTML = number;
           valid = 1;
@@ -760,5 +784,25 @@ useMemory.addEventListener('click',
       visual.innerHTML = number;
       valid = 1;
     }
+  }
+);
+
+var root = document.querySelector('.root');
+root.addEventListener('click', 
+  function squareRootNumber() {
+    if(valid == 1 && running == 0){
+      inOperation = parseFloat(number);
+      inOperation = Math.sqrt(inOperation);
+      number = toString(inOperation);
+      visual.innerHTML = number;
+      refresh = 1;
+    }
+    else {
+      number = 'Error';
+      visual.innerHTML = number;
+      error = 1;
+    }
+    operationArray.push('multiply');
+    product = 1;
   }
 );
