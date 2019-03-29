@@ -790,12 +790,21 @@ useMemory.addEventListener('click',
 var root = document.querySelector('.root');
 root.addEventListener('click', 
   function squareRootNumber() {
-    if(valid == 1 && running == 0){
+    if(valid == 1){
       inOperation = parseFloat(number);
       inOperation = Math.sqrt(inOperation);
-      number = toString(inOperation);
-      visual.innerHTML = number;
-      refresh = 1;
+
+      if(inOperation % 1 == 0) {
+        number = inOperation.toString();
+        visual.innerHTML = number;
+        refresh = 1;
+      }
+      else {
+        inOperation = inOperation.toFixed(2);
+        number = inOperation.toString();
+        visual.innerHTML = number;
+        refresh = 1;
+      }
     }
     else {
       number = 'Error';
