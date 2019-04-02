@@ -815,3 +815,32 @@ root.addEventListener('click',
     product = 1;
   }
 );
+
+var square = document.querySelector('.square');
+square.addEventListener('click', 
+  function squareNumber() {
+    if(valid == 1){
+      inOperation = parseFloat(number);
+      inOperation = inOperation * inOperation;
+
+      if(inOperation % 1 == 0) {
+        number = inOperation.toString();
+        visual.innerHTML = number;
+        refresh = 1;
+      }
+      else {
+        inOperation = inOperation.toFixed(2);
+        number = inOperation.toString();
+        visual.innerHTML = number;
+        refresh = 1;
+      }
+    }
+    else {
+      number = 'Error';
+      visual.innerHTML = number;
+      error = 1;
+    }
+    operationArray.push('multiply');
+    product = 1;
+  }
+);
