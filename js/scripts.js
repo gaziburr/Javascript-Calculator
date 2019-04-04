@@ -13,6 +13,19 @@ var error = 0;
 var operationArray = [];
 var visual = document.querySelector('.on-screen');
 var clear = document.querySelector('.clr');
+var del = document.querySelector('.del');
+
+del.addEventListener('click',
+  function deleteInput() {
+    if(number.length == 1) {
+      number = '0';
+      visual.innerHTML = number;
+    }
+    else {
+      number = number.slice(0, -1);
+      visual.innerHTML = number;
+    }
+  });
 
 clear.addEventListener('click',
   function clearScreen(){
@@ -25,6 +38,8 @@ clear.addEventListener('click',
     operationArray = [];
   }
 );
+
+
 
 var equal = document.querySelector('.equal');
 equal.addEventListener('click',
@@ -228,6 +243,9 @@ plus.addEventListener('click',
     else if(valid == 1 && running == 1){
       if(product == 1){
         inOperation = inOperation * parseFloat(number);
+        if (inOperation % 1 != 0) {
+          inOperation = inOperation.toFixed(2);
+        }
         number = inOperation.toString();
         if (number.length > 7){
           number = 'Over';
@@ -243,11 +261,11 @@ plus.addEventListener('click',
       }
       else if(quotient == 1){
         inOperation = inOperation / parseFloat(number);
-        number = inOperation.toString();
-        if(inOperation.toString().length > 7){
-          number = inOperation.toString().substr(0, 6);
+        if (inOperation % 1 != 0) {
+          inOperation = inOperation.toFixed(2);
         }
-        if(inOperation > 9999999){
+        number = inOperation.toString();
+        if(number.length > 7){
           number = 'Over';
           visual.innerHTML = number;
           error = 1;
@@ -261,6 +279,9 @@ plus.addEventListener('click',
       }
       else if(difference == 1){
         inOperation = inOperation - parseFloat(number);
+        if (inOperation % 1 != 0) {
+          inOperation = inOperation.toFixed(2);
+        }
         number = inOperation.toString();
         if (number.length > 7){
           number = 'Over';
@@ -312,6 +333,9 @@ minus.addEventListener('click',
     else if(valid == 1 && running == 1){
       if(product == 1){
         inOperation = inOperation * parseFloat(number);
+        if (inOperation % 1 != 0) {
+          inOperation = inOperation.toFixed(2);
+        }
         number = inOperation.toString();
         if (number.length > 7){
           number = 'Over';
@@ -327,11 +351,11 @@ minus.addEventListener('click',
       }
       else if(quotient == 1){
         inOperation = inOperation / parseFloat(number);
-        number = inOperation.toString();
-        if(inOperation.toString().length > 7){
-          number = inOperation.toString().substr(0, 6);
+        if (inOperation % 1 != 0) {
+          inOperation = inOperation.toFixed(2);
         }
-        if(inOperation > 9999999){
+        number = inOperation.toString();
+        if(number.length > 7){
           number = 'Over';
           visual.innerHTML = number;
           error = 1;
@@ -345,6 +369,9 @@ minus.addEventListener('click',
       }
       else if(sum == 1){
         inOperation = inOperation + parseFloat(number);
+        if (inOperation % 1 != 0) {
+          inOperation = inOperation.toFixed(2);
+        }
         number = inOperation.toString();
         if (number.length > 7){
           number = 'Over';
@@ -360,12 +387,18 @@ minus.addEventListener('click',
       }
       else{
         inOperation = parseFloat(number) + inOperation;
+        if (inOperation % 1 != 0) {
+          inOperation = inOperation.toFixed(2);
+        }
         if(inOperation.toString().length > 7){
           number = 'Over';
           visual.innerHTML = number;
           error = 1;
         }
         else{
+          if (inOperation % 1 != 0) {
+            inOperation = inOperation.toFixed(2);
+          }
           number = inOperation.toString();
           visual.innerHTML = number;
           refresh = 1;
@@ -396,6 +429,9 @@ divide.addEventListener('click',
     else if(valid == 1 && running == 1){
       if(product == 1){
         inOperation = inOperation * parseFloat(number);
+        if (inOperation % 1 != 0) {
+          inOperation = inOperation.toFixed(2);
+        }
         number = inOperation.toString();
         if (number.length > 7){
           number = 'Over';
@@ -411,6 +447,9 @@ divide.addEventListener('click',
       }
       else if(difference == 1){
         inOperation = inOperation - parseFloat(number);
+        if (inOperation % 1 != 0) {
+          inOperation = inOperation.toFixed(2);
+        }
         number = inOperation.toString();
         if (number.length > 7){
           number = 'Over';
@@ -426,6 +465,9 @@ divide.addEventListener('click',
       }
       else if(sum == 1){
         inOperation = inOperation + parseFloat(number);
+        if (inOperation % 1 != 0) {
+          inOperation = inOperation.toFixed(2);
+        }
         number = inOperation.toString();
         if (number.length > 7){
           number = 'Over';
@@ -439,10 +481,10 @@ divide.addEventListener('click',
           sum = 0;
         }
       }
-      else{
+      else {
         inOperation = inOperation / parseFloat(number);
-        if(inOperation.toString().length > 7){
-          number = inOperation.toString().substr(0, 6);
+        if (inOperation % 1 != 0) {
+          inOperation = inOperation.toFixed(2);
         }
         if(inOperation > 9999999){
           number = 'Over';
@@ -450,6 +492,9 @@ divide.addEventListener('click',
           error = 1;
         }
         else{
+          if (inOperation % 1 != 0) {
+            inOperation = inOperation.toFixed(2);
+          }
           number = inOperation.toString();
           visual.innerHTML = number;
           refresh = 1;
@@ -480,11 +525,11 @@ multiply.addEventListener('click',
     else if(valid == 1 && running == 1){
       if(quotient == 1){
         inOperation = inOperation / parseFloat(number);
+        if (inOperation % 1 != 0) {
+          inOperation = inOperation.toFixed(2);
+        }
         number = inOperation.toString();
         if(inOperation.toString().length > 7){
-          number = inOperation.toString().substr(0, 6);
-        }
-        if(inOperation > 9999999){
           number = 'Over';
           visual.innerHTML = number;
           error = 1;
@@ -498,6 +543,9 @@ multiply.addEventListener('click',
       }
       else if(difference == 1){
         inOperation = inOperation - parseFloat(number);
+        if (inOperation % 1 != 0) {
+          inOperation = inOperation.toFixed(2);
+        }
         number = inOperation.toString();
         if (number.length > 7){
           number = 'Over';
@@ -513,6 +561,9 @@ multiply.addEventListener('click',
       }
       else if(sum == 1){
         inOperation = inOperation + parseFloat(number);
+        if (inOperation % 1 != 0) {
+          inOperation = inOperation.toFixed(2);
+        }
         number = inOperation.toString();
         if (number.length > 7){
           number = 'Over';
@@ -528,6 +579,9 @@ multiply.addEventListener('click',
       }
       else{
         inOperation = inOperation * parseFloat(number);
+        if (inOperation % 1 != 0) {
+          inOperation = inOperation.toFixed(2);
+        }
         if(inOperation.toString().length > 7){
           number = 'Over';
           visual.innerHTML = number;
