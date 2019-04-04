@@ -3,6 +3,7 @@ var sum = 0;
 var difference = 0;
 var product = 0;
 var quotient = 0;
+var exponent = 0;
 var running = 0;
 var inOperation;
 var memory = '0';
@@ -32,15 +33,22 @@ equal.addEventListener('click',
       switch (operationArray[operationArray.length - 1]) {
         case 'plus':
           inOperation = parseFloat(number) + inOperation;
-          if(inOperation > 9999999){
+          if(inOperation.toString().length > 7){
             number = 'Over';
             visual.innerHTML = number;
             error = 1;
             break;
           }
           else{
-            number = inOperation.toString();
-            visual.innerHTML = number;
+            if(inOperation % 1 == 0) {
+              number = inOperation.toString();
+              visual.innerHTML = number;
+            }
+            else {
+              inOperation = inOperation.toFixed(2);
+              number = inOperation.toString();
+              visual.innerHTML = number;
+            }
             valid = 1;
             running = 0;
             sum = 0;
@@ -60,8 +68,15 @@ equal.addEventListener('click',
             break;
           }
           else{
-            number = inOperation.toString();
-            visual.innerHTML = number;
+            if(inOperation % 1 == 0) {
+              number = inOperation.toString();
+              visual.innerHTML = number;
+            }
+            else {
+              inOperation = inOperation.toFixed(2);
+              number = inOperation.toString();
+              visual.innerHTML = number;
+            }
             valid = 1;
             running = 0;
             sum = 0;
@@ -81,8 +96,15 @@ equal.addEventListener('click',
             break;
           }
           else{
-            number = inOperation.toString();
-            visual.innerHTML = number;
+            if(inOperation % 1 == 0) {
+              number = inOperation.toString();
+              visual.innerHTML = number;
+            }
+            else {
+              inOperation = inOperation.toFixed(2);
+              number = inOperation.toString();
+              visual.innerHTML = number;
+            }
             valid = 1;
             running = 0;
             sum = 0;
@@ -95,19 +117,17 @@ equal.addEventListener('click',
           }
         case 'divide':
           inOperation = inOperation / parseFloat(number);
+          if (inOperation % 1 != 0) {
+            inOperation = inOperation.toFixed(2);
+          }
           if(inOperation.toString().length > 7){
-            number = inOperation.toString().substr(0, 6);
-          }
-          else{
-            number = inOperation.toString();
-          }
-          if(inOperation > 9999999){
             number = 'Over';
             visual.innerHTML = number;
             error = 1;
             break;
           }
           else{
+            number = inOperation.toString();
             visual.innerHTML = number;
             valid = 1;
             running = 0;
@@ -121,6 +141,9 @@ equal.addEventListener('click',
           }
         case 'root':
           inOperation = Math.sqrt(parseFloat(number));
+          if(inOperation % 1 != 0) {
+            inOperation = inOperation.toFixed(2);
+          }
           if(inOperation.toString().length > 7){
             number = 'Over';
             visual.innerHTML = number;
@@ -140,7 +163,30 @@ equal.addEventListener('click',
             operationArray = [];
             break;
           } 
-
+        case 'exponent':
+          inOperation = Math.pow(inOperation, parseFloat(number));
+          if(inOperation % 1 != 0) {
+            inOperation = inOperation.toFixed(2);
+          }
+          if(inOperation.toString().length > 7){
+            number = 'Over';
+            visual.innerHTML = number;
+            error = 1;
+            break;
+          }
+          else{
+            number = inOperation.toString();
+            visual.innerHTML = number;
+            valid = 1;
+            running = 0;
+            sum = 0;
+            difference = 0;
+            product = 0;
+            quotient = 0;
+            refresh = 1;
+            operationArray = [];
+            break;
+          }
         default:
           visual.innerHTML = number;
           valid = 1;
@@ -811,8 +857,6 @@ root.addEventListener('click',
       visual.innerHTML = number;
       error = 1;
     }
-    operationArray.push('multiply');
-    product = 1;
   }
 );
 
@@ -840,7 +884,112 @@ square.addEventListener('click',
       visual.innerHTML = number;
       error = 1;
     }
-    operationArray.push('multiply');
-    product = 1;
   }
 );
+
+var expo = document.querySelector('.expo');
+expo.addEventListener('click', 
+  function expoNumber() {
+    if(valid == 1 && running == 0){
+      inOperation = parseFloat(number);
+      number = '0';
+      visual.innerHTML = number;
+      running = 1;
+      refresh = 1;
+      exponent = 1;
+    }
+    else if(valid == 1 && running == 1){
+      if(quotient == 1){
+        inOperation = inOperation / parseFloat(number);
+        number = inOperation.toString();
+        if(inOperation.toString().length > 7){
+          number = inOperation.toString().substr(0, 6);
+        }
+        if(inOperation > 9999999){
+          number = 'Over';
+          visual.innerHTML = number;
+          error = 1;
+        }
+        else {
+          visual.innerHTML = number;
+          refresh = 1;
+          valid = 0;
+          quotient = 0;
+        }
+      }
+      else if(difference == 1){
+        inOperation = inOperation - parseFloat(number);
+        number = inOperation.toString();
+        if (number.length > 7){
+          number = 'Over';
+          visual.innerHTML = number;
+          error = 1;
+        }
+        else {
+          visual.innerHTML = number;
+          refresh = 1;
+          valid = 0;
+          difference = 0;
+        }
+      }
+      else if(sum == 1){
+        inOperation = inOperation + parseFloat(number);
+        number = inOperation.toString();
+        if (number.length > 7){
+          number = 'Over';
+          visual.innerHTML = number;
+          error = 1;
+        }
+        else {
+          visual.innerHTML = number;
+          refresh = 1;
+          valid = 0;
+          sum = 0;
+        }
+      }
+      else if(multiply == 1){
+        inOperation = inOperation * parseFloat(number);
+        number = inOperation.toString();
+        if (number.length > 7){
+          number = 'Over';
+          visual.innerHTML = number;
+          error = 1;
+        }
+        else {
+          visual.innerHTML = number;
+          refresh = 1;
+          valid = 0;
+          multiply = 0;
+        }
+      }
+      else{
+        inOperation = Math.pow(inOperation, parseFloat(number));
+        if(inOperation.toString().length > 7){
+          number = 'Over';
+          visual.innerHTML = number;
+          error = 1;
+        }
+        else{
+          if(inOperation % 1 == 0) {
+            number = inOperation.toString();
+            visual.innerHTML = number;
+            refresh = 1;
+          }
+          else {
+            inOperation = inOperation.toFixed(2);
+            number = inOperation.toString();
+            visual.innerHTML = number;
+            refresh = 1;
+          }
+          valid = 0;
+        }
+      }
+    }
+    else {
+      number = 'Error';
+      visual.innerHTML = number;
+      error = 1;
+    }
+    operationArray.push('exponent');
+    product = 1;
+  });
