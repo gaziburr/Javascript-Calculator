@@ -49,7 +49,7 @@ equal.addEventListener('click',
         case 'plus':
           inOperation = parseFloat(number) + inOperation;
           if(inOperation.toString().length > 7){
-            number = 'Over';
+            number = inOperation.toExponential(2).toString();
             visual.innerHTML = number;
             error = 1;
             break;
@@ -77,7 +77,7 @@ equal.addEventListener('click',
         case 'minus':
           inOperation = inOperation - parseFloat(number);
           if(inOperation.toString().length > 7){
-            number = 'Over';
+            number = inOperation.toExponential(2).toString();
             visual.innerHTML = number;
             error = 1;
             break;
@@ -105,7 +105,7 @@ equal.addEventListener('click',
         case 'multiply':
           inOperation = inOperation * parseFloat(number);
           if(inOperation.toString().length > 7){
-            number = 'Over';
+            number = inOperation.toExponential(2).toString();
             visual.innerHTML = number;
             error = 1;
             break;
@@ -136,7 +136,7 @@ equal.addEventListener('click',
             inOperation = inOperation.toFixed(2);
           }
           if(inOperation.toString().length > 7){
-            number = 'Over';
+            number = inOperation.toExponential(2).toString();
             visual.innerHTML = number;
             error = 1;
             break;
@@ -160,7 +160,7 @@ equal.addEventListener('click',
             inOperation = inOperation.toFixed(2);
           }
           if(inOperation.toString().length > 7){
-            number = 'Over';
+            number = inOperation.toExponential(2).toString();
             visual.innerHTML = number;
             error = 1;
             break;
@@ -184,7 +184,7 @@ equal.addEventListener('click',
             inOperation = inOperation.toFixed(2);
           }
           if(inOperation.toString().length > 7){
-            number = 'Over';
+            number = inOperation.toExponential(2).toString();
             visual.innerHTML = number;
             error = 1;
             break;
@@ -248,7 +248,7 @@ plus.addEventListener('click',
         }
         number = inOperation.toString();
         if (number.length > 7){
-          number = 'Over';
+          number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
           error = 1;
         }
@@ -266,7 +266,7 @@ plus.addEventListener('click',
         }
         number = inOperation.toString();
         if(number.length > 7){
-          number = 'Over';
+          number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
           error = 1;
         }
@@ -284,7 +284,7 @@ plus.addEventListener('click',
         }
         number = inOperation.toString();
         if (number.length > 7){
-          number = 'Over';
+          number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
           error = 1;
         }
@@ -298,7 +298,7 @@ plus.addEventListener('click',
       else{
         inOperation = parseFloat(number) + inOperation;
         if(inOperation > 9999999){
-          number = 'Over';
+          number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
           error = 1;
         }
@@ -338,7 +338,7 @@ minus.addEventListener('click',
         }
         number = inOperation.toString();
         if (number.length > 7){
-          number = 'Over';
+          number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
           error = 1;
         }
@@ -356,7 +356,7 @@ minus.addEventListener('click',
         }
         number = inOperation.toString();
         if(number.length > 7){
-          number = 'Over';
+          number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
           error = 1;
         }
@@ -374,7 +374,7 @@ minus.addEventListener('click',
         }
         number = inOperation.toString();
         if (number.length > 7){
-          number = 'Over';
+          number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
           error = 1;
         }
@@ -391,7 +391,7 @@ minus.addEventListener('click',
           inOperation = inOperation.toFixed(2);
         }
         if(inOperation.toString().length > 7){
-          number = 'Over';
+          number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
           error = 1;
         }
@@ -434,7 +434,7 @@ divide.addEventListener('click',
         }
         number = inOperation.toString();
         if (number.length > 7){
-          number = 'Over';
+          number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
           error = 1;
         }
@@ -452,7 +452,7 @@ divide.addEventListener('click',
         }
         number = inOperation.toString();
         if (number.length > 7){
-          number = 'Over';
+          number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
           error = 1;
         }
@@ -470,7 +470,7 @@ divide.addEventListener('click',
         }
         number = inOperation.toString();
         if (number.length > 7){
-          number = 'Over';
+          number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
           error = 1;
         }
@@ -487,7 +487,7 @@ divide.addEventListener('click',
           inOperation = inOperation.toFixed(2);
         }
         if(inOperation > 9999999){
-          number = 'Over';
+          number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
           error = 1;
         }
@@ -530,7 +530,7 @@ multiply.addEventListener('click',
         }
         number = inOperation.toString();
         if(inOperation.toString().length > 7){
-          number = 'Over';
+          number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
           error = 1;
         }
@@ -548,7 +548,7 @@ multiply.addEventListener('click',
         }
         number = inOperation.toString();
         if (number.length > 7){
-          number = 'Over';
+          number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
           error = 1;
         }
@@ -566,7 +566,7 @@ multiply.addEventListener('click',
         }
         number = inOperation.toString();
         if (number.length > 7){
-          number = 'Over';
+          number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
           error = 1;
         }
@@ -583,7 +583,7 @@ multiply.addEventListener('click',
           inOperation = inOperation.toFixed(2);
         }
         if(inOperation.toString().length > 7){
-          number = 'Over';
+          number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
           error = 1;
         }
@@ -960,7 +960,7 @@ expo.addEventListener('click',
           number = inOperation.toString().substr(0, 6);
         }
         if(inOperation > 9999999){
-          number = 'Over';
+          number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
           error = 1;
         }
@@ -975,7 +975,7 @@ expo.addEventListener('click',
         inOperation = inOperation - parseFloat(number);
         number = inOperation.toString();
         if (number.length > 7){
-          number = 'Over';
+          number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
           error = 1;
         }
@@ -990,7 +990,7 @@ expo.addEventListener('click',
         inOperation = inOperation + parseFloat(number);
         number = inOperation.toString();
         if (number.length > 7){
-          number = 'Over';
+          number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
           error = 1;
         }
@@ -1005,7 +1005,7 @@ expo.addEventListener('click',
         inOperation = inOperation * parseFloat(number);
         number = inOperation.toString();
         if (number.length > 7){
-          number = 'Over';
+          number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
           error = 1;
         }
@@ -1019,7 +1019,7 @@ expo.addEventListener('click',
       else{
         inOperation = Math.pow(inOperation, parseFloat(number));
         if(inOperation.toString().length > 7){
-          number = 'Over';
+          number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
           error = 1;
         }
