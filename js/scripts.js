@@ -4,6 +4,7 @@ var difference = 0;
 var product = 0;
 var quotient = 0;
 var exponent = 0;
+var deciError = 0;
 var running = 0;
 var inOperation;
 var memory = '0';
@@ -850,6 +851,42 @@ nine.addEventListener('click',
         number = number + '9';
         visual.innerHTML = number;
         valid = 1;
+      }
+    }
+  }
+);
+var deci = document.querySelector('.deci');
+deci.addEventListener('click',
+  function deciPress(){
+    if(error == 1){
+
+    }
+    else if((number == '0' && number.length == 1) || refresh == 1){
+      number = number + '.';
+      visual.innerHTML = number;
+      valid = 1;
+      refresh = 0;
+    }
+    else {
+      if(number.length >= 7){
+        visual.innerHTML = number;
+        valid = 1;
+      }
+      else{
+        for(let i = 0; i < number.length; i++) {
+          if(number[i] == '.') { deciError = 1; }
+        }
+        if(deciError == 1) {
+          visual.innerHTML = number;
+          valid = 1;
+          deciError = 0;
+        }
+        else {
+          number = number + '.';
+          visual.innerHTML = number;
+          valid = 1;
+          deciError = 0;
+        }
       }
     }
   }
