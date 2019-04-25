@@ -549,16 +549,13 @@ divide.addEventListener('click',
         if (inOperation % 1 != 0) {
           inOperation = inOperation.toFixed(2);
         }
-        if(inOperation > 9999999){
+        if(inOperation.toString().length > 7){
           number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
           refresh = 1;
           valid = 0;
         }
         else{
-          if (inOperation % 1 != 0) {
-            inOperation = inOperation.toFixed(2);
-          }
           number = inOperation.toString();
           visual.innerHTML = number;
           refresh = 1;
