@@ -153,8 +153,21 @@ equal.addEventListener('click',
             break;
           }
         case 'divide':
+          if(number == '0') {
+            number = 'NaN';
+            valid = 1;
+            running = 0;
+            sum = 0;
+            difference = 0;
+            product = 0;
+            quotient = 0;
+            refresh = 1;
+            operationArray = [];
+            error = 1;
+            break;
+          }
           inOperation = inOperation / Number(number);
-          if (inOperation % 1 != 0) {
+          if(inOperation % 1 != 0) {
             inOperation = inOperation.toFixed(2);
           }
           if(inOperation.toString().length > 7){
@@ -475,6 +488,11 @@ minus.addEventListener('click',
 var divide = document.querySelector('.divide');
 divide.addEventListener('click',
   function divideNumber(){
+    if(number == '0') {
+      number = 'NaN';
+      visual.innerHTML = number;
+      error = 1;
+    }
     if(valid == 1 && running == 0){
       inOperation = Number(number);
       number = '0';
