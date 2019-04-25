@@ -275,8 +275,6 @@ equal.addEventListener('click',
 var plus = document.querySelector('.plus');
 plus.addEventListener('click',
   function addNumber(){
-    console.log(Number(number), valid, running);
-    
     if(valid == 1 && running == 0){
       inOperation = Number(number);
       number = '0';
@@ -295,6 +293,9 @@ plus.addEventListener('click',
         if (number.length > 7){
           number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
+          refresh = 1;
+          valid = 0;
+          product = 0;
         }
         else {
           visual.innerHTML = number;
@@ -312,6 +313,9 @@ plus.addEventListener('click',
         if(number.length > 7){
           number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
+          refresh = 1;
+          valid = 0;
+          quotient = 0;
         }
         else {
           visual.innerHTML = number;
@@ -329,6 +333,9 @@ plus.addEventListener('click',
         if (number.length > 7){
           number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
+          refresh = 1;
+          valid = 0;
+          difference = 0;
         }
         else {
           visual.innerHTML = number;
@@ -383,6 +390,9 @@ minus.addEventListener('click',
         if (number.length > 7){
           number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
+          refresh = 1;
+          valid = 0;
+          product = 0;
         }
         else {
           visual.innerHTML = number;
@@ -400,6 +410,9 @@ minus.addEventListener('click',
         if(number.length > 7){
           number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
+          refresh = 1;
+          valid = 0;
+          quotient = 0;
         }
         else {
           visual.innerHTML = number;
@@ -417,6 +430,9 @@ minus.addEventListener('click',
         if (number.length > 7){
           number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
+          refresh = 1;
+          valid = 0;
+          sum = 0;
         }
         else {
           visual.innerHTML = number;
@@ -433,6 +449,8 @@ minus.addEventListener('click',
         if(inOperation.toString().length > 7){
           number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
+          refresh = 1;
+          valid = 0;
         }
         else{
           if (inOperation % 1 != 0) {
@@ -475,6 +493,9 @@ divide.addEventListener('click',
         if (number.length > 7){
           number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
+          refresh = 1;
+          valid = 0;
+          product = 0;
         }
         else {
           visual.innerHTML = number;
@@ -492,6 +513,9 @@ divide.addEventListener('click',
         if (number.length > 7){
           number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
+          refresh = 1;
+          valid = 0;
+          difference = 0;
         }
         else {
           visual.innerHTML = number;
@@ -509,6 +533,9 @@ divide.addEventListener('click',
         if (number.length > 7){
           number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
+          refresh = 1;
+          valid = 0;
+          sum = 0;
         }
         else {
           visual.innerHTML = number;
@@ -525,7 +552,8 @@ divide.addEventListener('click',
         if(inOperation > 9999999){
           number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
-          error = 1;
+          refresh = 1;
+          valid = 0;
         }
         else{
           if (inOperation % 1 != 0) {
@@ -568,6 +596,9 @@ multiply.addEventListener('click',
         if(inOperation.toString().length > 7){
           number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
+          refresh = 1;
+          valid = 0;
+          quotient = 0;
         }
         else {
           visual.innerHTML = number;
@@ -585,6 +616,9 @@ multiply.addEventListener('click',
         if (number.length > 7){
           number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
+          refresh = 1;
+          valid = 0;
+          difference = 0;
         }
         else {
           visual.innerHTML = number;
@@ -602,6 +636,9 @@ multiply.addEventListener('click',
         if (number.length > 7){
           number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
+          refresh = 1;
+          valid = 0;
+          sum = 0;
         }
         else {
           visual.innerHTML = number;
@@ -618,6 +655,8 @@ multiply.addEventListener('click',
         if(inOperation.toString().length > 7){
           number = inOperation.toExponential(2).toString();
           visual.innerHTML = number;
+          refresh = 1;
+          valid = 0;
         }
         else{
           number = inOperation.toString();
@@ -989,13 +1028,13 @@ square.addEventListener('click',
       inOperation = Number(number);
       inOperation = inOperation * inOperation;
 
-      if(inOperation % 1 == 0) {
+      if(inOperation.toString().length > 7) {
+        inOperation = inOperation.toExponential(2);
         number = inOperation.toString();
         visual.innerHTML = number;
         refresh = 1;
       }
       else {
-        inOperation = inOperation.toFixed(2);
         number = inOperation.toString();
         visual.innerHTML = number;
         refresh = 1;
