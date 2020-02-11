@@ -1,3 +1,4 @@
+console.log("Hello World");
 var number = '0';
 var sum = 0;
 var difference = 0;
