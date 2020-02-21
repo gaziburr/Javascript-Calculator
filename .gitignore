@@ -1,0 +1,8 @@
+# If it has a / --> folder
+# If it has .extension --> file
+dontWant/
+dontWant.html
+test/
+
+dbsqlite
+node_modules/
